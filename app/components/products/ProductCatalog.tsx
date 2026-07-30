@@ -3,7 +3,13 @@
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 
-import { products } from "@/app/lib/products";
+import {
+  microgreens,
+  herbalPowders,
+  naturalSpices,
+  dehydratedVegetables,
+} from "@/app/lib/products";
+
 import ProductCard from "./ProductCard";
 
 const categories = [
@@ -14,9 +20,44 @@ const categories = [
   "Dehydrated Vegetables",
 ] as const;
 
+const products = [
+  ...microgreens.map((item) => ({
+    id: `microgreen-${item.name}`,
+    category: "Microgreens",
+    name: item.name,
+    image: item.image,
+    description: item.description,
+  })),
+
+  ...herbalPowders.map((item) => ({
+    id: `herbal-${item.name}`,
+    category: "Herbal Powders",
+    name: item.name,
+    image: item.image,
+    description: item.description,
+  })),
+
+  ...naturalSpices.map((item) => ({
+    id: `spice-${item.name}`,
+    category: "Natural Spices",
+    name: item.name,
+    image: item.image,
+    description: item.description,
+  })),
+
+  ...dehydratedVegetables.map((item) => ({
+    id: `vegetable-${item.name}`,
+    category: "Dehydrated Vegetables",
+    name: item.name,
+    image: item.image,
+    description: item.description,
+  })),
+];
+
 export default function ProductCatalog() {
   const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("All");
+  const [category, setCategory] =
+    useState<(typeof categories)[number]>("All");
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
@@ -25,9 +66,7 @@ export default function ProductCatalog() {
 
       const matchesSearch =
         product.name.toLowerCase().includes(search.toLowerCase()) ||
-        product.shortDescription
-          .toLowerCase()
-          .includes(search.toLowerCase());
+        product.description.toLowerCase().includes(search.toLowerCase());
 
       return matchesCategory && matchesSearch;
     });
@@ -36,7 +75,6 @@ export default function ProductCatalog() {
   return (
     <>
       {/* Search */}
-
       <div className="mx-auto mt-16 max-w-xl">
         <div className="flex items-center rounded-2xl border border-green-200 bg-white px-4 shadow-sm">
           <Search className="text-green-700" size={20} />
@@ -52,7 +90,6 @@ export default function ProductCatalog() {
       </div>
 
       {/* Categories */}
-
       <div className="mt-10 flex flex-wrap justify-center gap-3">
         {categories.map((item) => (
           <button
@@ -70,12 +107,22 @@ export default function ProductCatalog() {
       </div>
 
       {/* Products */}
-
       <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {filteredProducts.map((product) => (
           <ProductCard
             key={product.id}
-            product={product}
+            title={product.name}
+            description={product.description}
+            image={product.image}
+            link={
+              product.category === "Microgreens"
+                ? "/products/microgreens"
+                : product.category === "Herbal Powders"
+                ? "/products/herbal-powders"
+                : product.category === "Natural Spices"
+                ? "/products/natural-spices"
+                : "/products/dehydrated-vegetables"
+            }
           />
         ))}
       </div>
