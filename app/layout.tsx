@@ -4,6 +4,8 @@ import "./globals.css";
 
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "sonner";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -123,6 +125,7 @@ export default function RootLayout({
           richColors
           closeButton
         />
+         <GoogleAnalytics gaId="G-DVRZX2HY7X" />
       </body>
     </html>
   );
