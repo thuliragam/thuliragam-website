@@ -40,14 +40,13 @@ export default function Testimonials() {
         description="Customer satisfaction inspires us to continue delivering fresh, natural, and high-quality products."
       />
 
-      <div className="mt-20 grid gap-8 lg:grid-cols-3">
-
+      <div className="mt-20 grid items-stretch gap-8 lg:grid-cols-3">
         {testimonials.map((testimonial, index) => (
           <FadeUp
             key={testimonial.name}
             delay={index * 0.15}
           >
-            <div className="rounded-3xl border border-green-100 bg-white p-8 shadow-lg transition-all hover:-translate-y-2 hover:border-green-300 hover:shadow-2xl">
+            <div className="flex h-full flex-col rounded-3xl border border-green-100 bg-white p-8 shadow-lg transition-all hover:-translate-y-2 hover:border-green-300 hover:shadow-2xl">
 
               <div className="mb-6 flex">
                 {[...Array(5)].map((_, i) => (
@@ -59,9 +58,9 @@ export default function Testimonials() {
                 ))}
               </div>
 
-              <p className="leading-8 text-gray-600">
-                "{testimonial.review}"
-              </p>
+              <p className="flex-1 leading-8 text-gray-600">
+  "{testimonial.review}"
+</p>
 
               <div className="mt-8 flex items-center gap-4">
 

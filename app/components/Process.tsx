@@ -58,13 +58,13 @@ export default function Process() {
         description="Every Thuliragam product follows a careful journey to ensure freshness, nutrition, and quality."
       />
 
-      <div className="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-5">
+      <div className="mt-20 grid items-stretch gap-8 md:grid-cols-2 xl:grid-cols-5">
         {steps.map((step, index) => (
           <FadeUp
             key={step.title}
             delay={index * 0.1}
           >
-            <div className="group relative rounded-3xl bg-white p-8 text-center shadow-lg transition-all hover:-translate-y-2 hover:shadow-2xl">
+            <div className="group relative flex h-full flex-col rounded-3xl bg-white p-8 text-center shadow-lg transition-all hover:-translate-y-2 hover:shadow-2xl">
 
               <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-green-100 text-green-700 transition-colors group-hover:bg-green-700 group-hover:text-white">
                 {step.icon}
@@ -78,9 +78,9 @@ export default function Process() {
                 {step.title}
               </h3>
 
-              <p className="mt-4 leading-7 text-gray-600">
-                {step.description}
-              </p>
+             <p className="mt-4 min-h-[120px] leading-7 text-gray-600">
+  {step.description}
+</p>
             </div>
           </FadeUp>
         ))}
