@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://www.thuliragam.com";
+const siteUrl = "https://www.thuliragam.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
