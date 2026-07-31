@@ -4,7 +4,9 @@ import "./globals.css";
 
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "sonner";
+import WhatsAppButton from "./components/WhatsAppButton";
 import { GoogleAnalytics } from "@next/third-parties/google";
+
 
 
 const geistSans = Geist({
@@ -148,22 +150,26 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify(organizationSchema),
-  }}
-/>
-        {children}
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify(organizationSchema),
+    }}
+  />
 
-        <ScrollToTop />
+  {children}
 
-        <Toaster
-          position="top-right"
-          richColors
-          closeButton
-        />
+  <WhatsAppButton />
+
+  <ScrollToTop />
+
+  <Toaster
+    position="top-right"
+    richColors
+    closeButton
+  />
          <GoogleAnalytics gaId="G-DVRZX2HY7X" />
+         
       </body>
     </html>
   );
