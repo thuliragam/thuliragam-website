@@ -119,7 +119,7 @@ toast.error("Something went wrong. Please try again.");      console.error(error
                     Phone
                   </h3>
 
-                  <a
+                 <a
   href={`tel:${COMPANY.phone.replace(/\s/g, "")}`}
   onClick={() =>
     trackEvent(
@@ -128,7 +128,7 @@ toast.error("Something went wrong. Please try again.");      console.error(error
       "Phone Number"
     )
   }
-  className="mt-2 block text-gray-600 hover:text-green-700"
+  className="mt-2 block text-gray-600 hover:text-green-700 transition-colors"
 >
   {COMPANY.phone}
 </a>
@@ -154,9 +154,19 @@ toast.error("Something went wrong. Please try again.");      console.error(error
                     Email
                   </h3>
 
-                  <p className="mt-2 text-gray-600">
-                    {COMPANY.email}
-                  </p>
+                  <a
+  href={`mailto:${COMPANY.email}`}
+  onClick={() =>
+    trackEvent(
+      "email_click",
+      "Contact",
+      "Email Address"
+    )
+  }
+  className="mt-2 block text-gray-600 hover:text-green-700 transition-colors"
+>
+  {COMPANY.email}
+</a>
 
                 </div>
 
