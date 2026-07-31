@@ -140,39 +140,33 @@ toast.error("Something went wrong. Please try again.");      console.error(error
             </div>
 
             <div className="rounded-3xl bg-white p-6 shadow-lg">
+  <div className="flex items-start gap-4">
+    <Mail
+      className="text-green-700"
+      size={24}
+    />
 
-              <div className="flex items-start gap-4">
+    <div>
+      <h3 className="font-bold text-green-900">
+        Email
+      </h3>
 
-                <Mail
-                  className="text-green-700"
-                  size={24}
-                />
-
-                <div>
-
-                  <h3 className="font-bold text-green-900">
-                    Email
-                  </h3>
-
-                  <a
-  href={`mailto:${COMPANY.email}`}
-  onClick={() =>
-    trackEvent(
-      "email_click",
-      "Contact",
-      "Email Address"
-    )
-  }
-  className="mt-2 block text-gray-600 hover:text-green-700 transition-colors"
->
-  {COMPANY.email}
-</a>
-
-                </div>
-
-              </div>
-
-            </div>
+      <a
+        href={`mailto:${COMPANY.email}`}
+        onClick={() =>
+          trackEvent(
+            "email_click",
+            "Contact",
+            "Email Address"
+          )
+        }
+        className="mt-2 block text-green-700 hover:text-green-900 hover:underline"
+      >
+        {COMPANY.email}
+      </a>
+    </div>
+  </div>
+</div>
 
             <div className="rounded-3xl bg-white p-6 shadow-lg">
 

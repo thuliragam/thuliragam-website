@@ -11,7 +11,7 @@ export const COMPANY = {
 
   address: "Coimbatore, Tamil Nadu, India",
 
-  website: "https://www.thuliragam.com",
+  website: "https://www.thuliragam.in",
 };
 
 export const PRODUCTS = [
