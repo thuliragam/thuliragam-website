@@ -8,149 +8,129 @@ export const microgreens: Product[] = [
   {
     name: "Sunflower",
     image: "/images/products/sunflower.jpg",
-    description:
-      "Crunchy, protein-rich microgreens packed with Vitamin E and healthy fats.",
+    description: "Nutty & crunchy • High in Protein • Rich in Vitamin E",
   },
   {
     name: "Broccoli",
     image: "/images/products/broccoli.jpg",
-    description:
-      "Rich in sulforaphane, antioxidants, Vitamin C, and dietary fiber.",
+    description: "Rich in Sulforaphane • Supports Immunity • Mild Flavor",
   },
   {
     name: "Radish",
     image: "/images/products/radish.jpg",
-    description:
-      "Crisp, peppery microgreens rich in Vitamin C and natural antioxidants.",
+    description: "Peppery Flavor • Rich in Vitamin C • Fresh & Crisp",
   },
   {
-    name: "PeaShoots",
+    name: "Pea Shoots",
     image: "/images/products/pea-shoot.jpg",
-    description:
-      "Sweet and tender shoots packed with protein, Vitamin A, and Vitamin C.",
+    description: "Naturally Sweet • High in Vitamins • Tender Shoots",
   },
   {
     name: "Red Cabbage",
     image: "/images/products/red-cabbage.jpg",
-    description:
-      "Vibrant purple microgreens rich in anthocyanins and Vitamin C.",
+    description: "Rich in Antioxidants • Vibrant Purple • Vitamin C",
   },
   {
     name: "Mustard",
     image: "/images/products/mustard.jpg",
-    description:
-      "Spicy-flavored microgreens rich in antioxidants and essential minerals.",
+    description: "Bold Peppery Taste • Mineral Rich • Fresh Harvest",
   },
   {
     name: "Fenugreek",
     image: "/images/products/fenugreek.jpg",
-    description:
-      "Nutritious greens traditionally valued for digestion and wellness.",
+    description: "Slightly Bitter • Supports Digestion • Nutrient Rich",
   },
   {
     name: "Wheatgrass",
     image: "/images/products/wheatgrass.jpg",
-    description:
-      "Fresh green shoots naturally rich in chlorophyll and nutrients.",
+    description: "Chlorophyll Rich • Natural Detox • Fresh Green",
   },
   {
     name: "Kale",
     image: "/images/products/kale.jpg",
-    description:
-      "A nutrient-dense microgreen loaded with calcium, iron, and Vitamin K.",
+    description: "Superfood Greens • Rich in Calcium • Vitamin K",
   },
   {
     name: "Basil",
     image: "/images/products/basil.jpg",
-    description:
-      "Fragrant basil microgreens with a fresh aroma and delicate flavor.",
+    description: "Fresh Aroma • Sweet Herbal Taste • Rich in Antioxidants",
   },
   {
     name: "Amaranth (Red)",
     image: "/images/products/amaranth-red.jpg",
-    description:
-      "Beautiful crimson microgreens rich in antioxidants and minerals.",
+    description: "Beautiful Crimson • Rich in Iron • Antioxidant Rich",
   },
   {
     name: "Coriander",
     image: "/images/products/coriander.jpg",
-    description:
-      "Fresh coriander microgreens with a distinctive aroma and flavor.",
+    description: "Fresh Herbal Aroma • Refreshing Taste • Vitamin Rich",
   },
   {
     name: "Beetroot",
     image: "/images/products/beetroot.jpg",
-    description:
-      "Colorful microgreens rich in natural pigments and nutrients.",
+    description: "Naturally Sweet • Rich in Iron • Vibrant Color",
   },
   {
     name: "Pak Choi",
     image: "/images/products/pak-choi.jpg",
-    description:
-      "Tender Asian greens with a mild flavor and crisp texture.",
+    description: "Mild Flavor • Crisp Texture • Asian Favorite",
   },
   {
     name: "Bok Choy",
     image: "/images/products/bok-choy.jpg",
-    description:
-      "Fresh and crunchy microgreens ideal for salads and healthy meals.",
+    description: "Fresh & Crunchy • Vitamin Rich • Perfect for Salads",
   },
   {
     name: "Purple Kohlrabi",
     image: "/images/products/purple-kohlrabi.jpg",
-    description:
-      "Mild, colorful microgreens rich in Vitamin C and antioxidants.",
+    description: "Mild Sweetness • Rich in Vitamin C • Colorful Greens",
   },
   {
     name: "Arugula",
     image: "/images/products/arugula.jpg",
-    description:
-      "Peppery microgreens with a bold flavor and nutrient-rich profile.",
+    description: "Peppery Taste • Calcium Rich • Gourmet Choice",
   },
   {
     name: "Mizuna",
     image: "/images/products/mizuna.jpg",
-    description:
-      "Japanese mustard greens with delicate leaves and a mild peppery taste.",
+    description: "Delicate Leaves • Mild Peppery Flavor • Japanese Greens",
   },
   {
     name: "Green Gram",
     image: "/images/products/green-gram.jpg",
-    description:
-      "Protein-rich microgreens with a fresh taste and crisp texture.",
+    description: "High Plant Protein • Fresh Crunch • Fiber Rich",
   },
   {
     name: "Chickpea",
     image: "/images/products/chickpea.jpg",
-    description:
-      "Tender shoots naturally rich in plant protein and dietary fiber.",
+    description: "Tender Shoots • Protein Rich • Naturally Nutritious",
   },
 ];
 
 export const herbalPowders: Product[] = [
   {
-    name: "Moringa Powder",
-    image: "/images/products/moringa-powder.jpg",
+    name: "Curry Leaf Powder",
+    image: "/images/products/curry-leaf-powder.jpg",
     description:
-      "Premium moringa leaf powder made from carefully selected leaves.",
+      "Iron Rich • Traditional Wellness • Freshly Ground",
   },
   {
     name: "Amla Powder",
     image: "/images/products/amla-powder.jpg",
     description:
-      "Natural Indian gooseberry powder rich in Vitamin C.",
+      "High in Vitamin C • Supports Immunity • Natural Antioxidant",
   },
   {
-    name: "Beetroot Powder",
-    image: "/images/products/beetroot-powder.jpg",
+    name: "Moringa Powder",
+    image: "/images/products/moringa-powder.jpg",
     description:
-      "Pure beetroot powder suitable for health drinks and recipes.",
+      "Rich in Iron • Calcium Rich • Daily Superfood",
   },
   {
-    name: "Vegetable Powder",
-    image: "/images/products/vegetable-powder.jpg",
+    name: "Microgreen Powder",
+    image: "/images/products/microgreen-powder.jpg",
     description:
-      "Nutritious vegetable powder prepared from selected vegetables.",
+      "Nutrient Dense • Daily Wellness • Naturally Dried",
   },
 ];
 

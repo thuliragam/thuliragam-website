@@ -5,6 +5,7 @@ import Image from "next/image";
 interface Product {
   name: string;
   image: string;
+  description: string;
 }
 
 interface CategoryProductGridProps {
@@ -44,8 +45,8 @@ export default function CategoryProductGrid({
                 {product.name}
               </h3>
 
-              <p className="mt-3 text-sm leading-6 text-gray-600">
-                Fresh • Nutrient Rich • Hygienically Grown
+              <p className="mt-3 min-h-[48px] text-sm leading-6 text-gray-600">
+                {product.description}
               </p>
             </div>
           </div>

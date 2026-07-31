@@ -8,7 +8,7 @@ import SectionTitle from "./SectionTitle";
 
 const testimonials = [
   {
-    name: "Maanikam V.",
+    name: "Maanikam V.K",
     role: "Health Enthusiast",
     review:
       "The microgreens were incredibly fresh and delicious. You can really taste the quality and care that goes into every harvest.",
