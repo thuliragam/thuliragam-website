@@ -32,15 +32,23 @@ export const metadata: Metadata = {
     "Thuliragam offers premium microgreens, herbal powders, natural spices, and dehydrated vegetables. Fresh, hygienically processed, and naturally healthy.",
 
   keywords: [
-    "Thuliragam",
-    "Microgreens",
-    "Herbal Powders",
-    "Natural Spices",
-    "Dehydrated Vegetables",
-    "Healthy Food",
-    "Coimbatore",
-    "Tamil Nadu",
-  ],
+  "Thuliragam",
+  "Microgreens Coimbatore",
+  "Fresh Microgreens",
+  "Microgreens Supplier",
+  "Herbal Powders",
+  "Curry Leaf Powder",
+  "Moringa Powder",
+  "Amla Powder",
+  "Natural Spices",
+  "Organic Spices",
+  "Dehydrated Vegetables",
+  "Healthy Food",
+  "Superfoods",
+  "Organic Food Store",
+  "Coimbatore",
+  "Tamil Nadu",
+],
 
   authors: [
     {
@@ -51,11 +59,20 @@ export const metadata: Metadata = {
   creator: "Thuliragam",
 
   publisher: "Thuliragam",
+  themeColor: "#2E7D32",
+  category: "Organic Food",
 
   robots: {
+  index: true,
+  follow: true,
+  googleBot: {
     index: true,
     follow: true,
+    "max-video-preview": -1,
+    "max-image-preview": "large",
+    "max-snippet": -1,
   },
+},
 
   alternates: {
     canonical: "/",
