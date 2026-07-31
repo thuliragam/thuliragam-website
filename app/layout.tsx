@@ -127,12 +127,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Thuliragam",
+  url: "https://www.thuliragam.in",
+  logo: "https://www.thuliragam.in/logo.png",
+  email: "thuliragam.in@gmail.com",
+  telephone: "+91 9677799226",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Coimbatore",
+    addressRegion: "Tamil Nadu",
+    addressCountry: "IN",
+  },
+};
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(organizationSchema),
+  }}
+/>
         {children}
 
         <ScrollToTop />
