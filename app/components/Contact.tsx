@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/app/lib/gtag";
 import {
   Mail,
   MapPin,
@@ -56,16 +57,25 @@ export default function Contact() {
       const data = await response.json();
 
       if (data.success) {
-toast.success("Message sent successfully!", {
-  description: "Thank you for contacting Thuliragam. We'll get back to you soon.",
-});
-        setForm({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-        });
-      } else {
+  // Google Analytics Event
+  trackEvent(
+    "contact_form_submit",
+    "Contact",
+    "Website Contact Form"
+  );
+
+  toast.success("Message sent successfully!", {
+    description:
+      "Thank you for contacting Thuliragam. We'll get back to you soon.",
+  });
+
+  setForm({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+} else {
 toast.error(data.message);      }
     } catch (error) {
 toast.error("Something went wrong. Please try again.");      console.error(error);
@@ -109,9 +119,19 @@ toast.error("Something went wrong. Please try again.");      console.error(error
                     Phone
                   </h3>
 
-                  <p className="mt-2 text-gray-600">
-                    {COMPANY.phone}
-                  </p>
+                  <a
+  href={`tel:${COMPANY.phone.replace(/\s/g, "")}`}
+  onClick={() =>
+    trackEvent(
+      "phone_click",
+      "Contact",
+      "Phone Number"
+    )
+  }
+  className="mt-2 block text-gray-600 hover:text-green-700"
+>
+  {COMPANY.phone}
+</a>
 
                 </div>
 
@@ -170,10 +190,17 @@ toast.error("Something went wrong. Please try again.");      console.error(error
             </div>
 
             <a
-              href={`https://wa.me/${COMPANY.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+  href={`https://wa.me/${COMPANY.whatsapp}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={() =>
+    trackEvent(
+      "whatsapp_click",
+      "Contact",
+      "Contact Section WhatsApp"
+    )
+  }
+>
               <Button className="w-full">
                 <MessageCircle
                   size={18}
