@@ -31,7 +31,7 @@ export default function DehydratedCTA() {
           </Link>
 
           <Link
-            href="https://wa.me/91967799226"
+            href="https://wa.me/919677799226"
             target="_blank"
             className="inline-flex items-center gap-2 rounded-xl border border-white/30 px-8 py-4 font-semibold text-white transition hover:bg-white/10"
           >

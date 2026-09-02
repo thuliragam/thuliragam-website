@@ -5,7 +5,7 @@ export const COMPANY = {
 
   phone: "+91 96777 99226",
 
-  whatsapp: "91967799226",
+  whatsapp: "919677799226",
 
   email: "thuliragam.in@gmail.com",
 
