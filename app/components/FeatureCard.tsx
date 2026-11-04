@@ -1,7 +1,9 @@
+
 "use client";
 
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 interface FeatureCardProps {
   icon: ReactNode;
@@ -16,29 +18,40 @@ export default function FeatureCard({
 }: FeatureCardProps) {
   return (
     <motion.div
-      whileHover={{
-        y: -8,
-        scale: 1.02,
-      }}
+      whileHover={{ y: -5 }}
       transition={{
         duration: 0.3,
+        ease: "easeOut",
       }}
-      className="group flex h-full flex-col rounded-3xl border border-green-100 bg-white p-8 shadow-lg transition-all hover:border-green-300 hover:shadow-2xl"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#00A844]/20 bg-white p-6 shadow-[0_8px_30px_rgba(0,168,68,0.06)] transition-all duration-300 hover:border-[#00A844] hover:shadow-[0_20px_45px_rgba(0,168,68,0.15)] sm:p-7"
     >
+      {/* Bright green top accent */}
+      <div className="absolute left-0 top-0 h-1 w-0 bg-[#00A844] transition-all duration-500 group-hover:w-full" />
+
       {/* Icon */}
-      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-green-100 text-green-700 transition duration-300 group-hover:bg-green-700 group-hover:text-white">
+      <div className="mb-7 flex h-14 w-14 items-center justify-center rounded-xl border border-[#00A844]/15 bg-[#D9FBE6] text-[#008F3D] transition-all duration-300 group-hover:border-[#00A844] group-hover:bg-[#00A844] group-hover:text-white">
         {icon}
       </div>
 
-      {/* Title */}
-      <h3 className="text-2xl font-bold text-green-900">
-        {title}
-      </h3>
+      {/* Title and decorative arrow */}
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="text-xl font-semibold leading-snug tracking-tight text-[#006B35] sm:text-2xl">
+          {title}
+        </h3>
+
+        <ArrowUpRight
+          size={19}
+          className="mt-1 shrink-0 text-[#00A844] opacity-70 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:opacity-100"
+        />
+      </div>
 
       {/* Description */}
-     <p className="mt-4 min-h-[100px] leading-7 text-gray-600">
-  {description}
-</p>
+      <p className="mt-4 flex-1 text-sm leading-7 text-[#355B45] sm:text-base">
+        {description}
+      </p>
+
+      {/* Bottom accent */}
+      <div className="mt-6 h-1 w-10 rounded-full bg-[#00A844]/50 transition-all duration-300 group-hover:w-16 group-hover:bg-[#00A844]" />
     </motion.div>
   );
 }

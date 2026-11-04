@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -16,67 +17,78 @@ export default function Features() {
   return (
     <SectionContainer
       id="features"
-      className="bg-white"
+      className="bg-[#F6F3E9]"
     >
       <SectionTitle
-        badge="🌿 WHY THULIRAGAM"
-        title="Nature's Finest,"
-        highlight="Delivered Fresh"
-        description="Every product is grown and prepared with care to ensure maximum freshness, nutrition, and quality."
+        badge="WHY THULIRAGAM MICROGREENS"
+        title="Small Greens,"
+        highlight="Big Nutrition"
+        description="Discover the goodness of fresh microgreens — young, vibrant greens grown with care to bring freshness, flavour and plant-based nutrition to your everyday meals."
       />
 
-      <div className="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+      {/* Microgreens feature cards */}
+      <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:mt-20 xl:grid-cols-4">
 
         <FadeUp delay={0.1}>
           <FeatureCard
-            icon={<Leaf size={34} />}
-            title="100% Natural"
-            description="Pure products made from carefully selected natural ingredients without artificial additives."
+            icon={<Leaf size={30} strokeWidth={1.6} />}
+            title="Fresh & Vibrant"
+            description="Enjoy young greens with vibrant colours, fresh textures and distinctive natural flavours."
           />
         </FadeUp>
 
         <FadeUp delay={0.2}>
           <FeatureCard
-            icon={<Sprout size={34} />}
-            title="Farm Fresh"
-            description="Harvested daily to preserve freshness, nutrients, and exceptional taste."
+            icon={<Sprout size={30} strokeWidth={1.6} />}
+            title="Grown with Care"
+            description="Every microgreen variety is cultivated with attention to its growing stage and quality."
           />
         </FadeUp>
 
         <FadeUp delay={0.3}>
           <FeatureCard
-            icon={<ShieldCheck size={34} />}
-            title="Hygienically Packed"
-            description="Processed and packed in a clean environment following strict quality standards."
+            icon={<ShieldCheck size={30} strokeWidth={1.6} />}
+            title="Carefully Handled"
+            description="Handled and packed with care to maintain freshness and quality from harvest to delivery."
           />
         </FadeUp>
 
         <FadeUp delay={0.4}>
           <FeatureCard
-            icon={<HeartPulse size={34} />}
-            title="Healthy Living"
-            description="Nutritious food products that support a healthier lifestyle for you and your family."
+            icon={<HeartPulse size={30} strokeWidth={1.6} />}
+            title="Everyday Nutrition"
+            description="Add a colourful, nutrient-rich touch to salads, sandwiches, smoothies and everyday meals."
           />
         </FadeUp>
 
       </div>
 
-      {/* Bottom Banner */}
-
+      {/* Premium microgreens brand banner */}
       <FadeUp delay={0.5}>
-        <div className="mt-20 rounded-[32px] bg-gradient-to-r from-green-700 to-green-600 p-10 text-center shadow-xl">
+        <div className="relative mt-16 overflow-hidden rounded-[1.5rem] border border-[#C5A568]/25 bg-[#006B35] px-6 py-10 text-center shadow-[0_24px_60px_rgba(0,107,53,0.18)] sm:mt-20 sm:rounded-[2rem] sm:px-12 sm:py-14">
 
-          <h3 className="text-3xl font-bold text-white">
-            Freshness in Every Bite.
-          </h3>
+          <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[#78966D]/20 blur-[80px]" />
 
-          <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-green-100">
-            From premium microgreens to herbal powders, natural spices,
-            and dehydrated vegetables, Thuliragam is committed to
-            delivering nutritious products that help you live healthier
-            every day.
-          </p>
+          <div className="relative mx-auto max-w-3xl">
 
+            <p className="text-xs font-medium uppercase tracking-[0.32em] text-[#D5BD86]">
+              Freshness Begins with Nature
+            </p>
+
+            <h3 className="mt-5 text-3xl font-medium leading-tight tracking-tight text-[#F6F3E9] sm:text-4xl lg:text-5xl">
+              A Little Green. A Lot of Goodness.
+            </h3>
+
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#D8E2D7] sm:text-base sm:leading-8">
+              At Thuliragam, we grow fresh microgreens with care,
+              bringing together nature's colours, flavours and
+              goodness. Make every meal a little greener with
+              the freshness of young greens.
+            </p>
+
+            <div className="mx-auto mt-8 h-px w-16 bg-[#C5A568]" />
+
+          </div>
         </div>
       </FadeUp>
 

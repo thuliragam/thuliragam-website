@@ -6,7 +6,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "sonner";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { GoogleAnalytics } from "@next/third-parties/google";
-
+import { CartProvider } from "./components/cart/CartContext";
 
 
 const geistSans = Geist({
@@ -157,7 +157,9 @@ export default function RootLayout({
     }}
   />
 
+ <CartProvider>
   {children}
+</CartProvider>
 
   <WhatsAppButton />
 

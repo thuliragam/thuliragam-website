@@ -1,161 +1,138 @@
-"use client";
 
-import Image from "next/image";
-import { Leaf, ShieldCheck, Sprout } from "lucide-react";
+"use client";
 
 import FadeUp from "./FadeUp";
 import Button from "./Button";
-import FallingLeaves from "./FallingLeaves";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-gradient-to-br from-green-50 via-white to-green-100"
+      className="relative overflow-hidden bg-gradient-to-br from-[#e8fff0] via-[#f8fffb] to-[#e2f8e9]"
     >
-      <FallingLeaves />
+      {/* Soft botanical background effects */}
+      <div className="pointer-events-none absolute -left-32 top-20 h-96 w-96 rounded-full bg-green-300/20 blur-[100px]" />
+      <div className="pointer-events-none absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-emerald-200/20 blur-[100px]" />
 
-      {/* Background Glow */}
-      <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-green-200/30 blur-3xl" />
-      <div className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-green-300/20 blur-3xl" />
+      {/* Floating botanical leaves */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <span className="floating-leaf leaf-one">🍃</span>
+        <span className="floating-leaf leaf-two">🌿</span>
+        <span className="floating-leaf leaf-three">🍃</span>
+        <span className="floating-leaf leaf-four">🌱</span>
+        <span className="floating-leaf leaf-five">🍃</span>
+      </div>
 
-<div className="relative mx-auto flex min-h-[85vh] max-w-7xl items-center px-6 pt-6 pb-12 lg:px-8">
-<div className="grid lg:grid-cols-2 items-start gap-12">
+      <style jsx>{`
+        .floating-leaf {
+          position: absolute;
+          display: block;
+          opacity: 0.35;
+          animation: leafFloat 7s ease-in-out infinite;
+        }
 
+        .leaf-one {
+          top: 12%;
+          left: 8%;
+          font-size: 34px;
+        }
 
-          {/* LEFT */}
+        .leaf-two {
+          top: 25%;
+          right: 8%;
+          font-size: 38px;
+          animation-delay: 1s;
+        }
 
-          <div>
+        .leaf-three {
+          bottom: 15%;
+          left: 45%;
+          font-size: 28px;
+          animation-delay: 2s;
+        }
 
-            <FadeUp>
+        .leaf-four {
+          top: 65%;
+          left: 5%;
+          font-size: 30px;
+          animation-delay: 3s;
+        }
 
-              <span className="inline-flex rounded-full bg-green-100 px-5 py-2 text-sm font-semibold text-green-700">
-                🌱 Fresh • Natural • Healthy
-              </span>
+        .leaf-five {
+          bottom: 12%;
+          right: 12%;
+          font-size: 36px;
+          animation-delay: 1.5s;
+        }
 
-            </FadeUp>
+        @keyframes leafFloat {
+          0%, 100% {
+            transform: translateY(0) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-25px) rotate(15deg);
+          }
+        }
+      `}</style>
 
-            <FadeUp delay={0.2}>
+      <div className="relative mx-auto grid min-h-[540px] max-w-7xl items-center gap-10 px-5 py-12 sm:px-8 lg:grid-cols-2 lg:gap-14 lg:py-16">
 
-              <h1 className="mt-8 text-5xl font-extrabold leading-tight text-green-950 md:text-6xl">
-
-                Bringing
-
-                <span className="block text-green-600">
-                  Nature's Goodness
-                </span>
-
-                To Every Home
-
-              </h1>
-
-            </FadeUp>
-
-            <FadeUp delay={0.4}>
-
-              <p className="mt-8 max-w-xl text-lg leading-8 text-gray-600">
-
-                Discover premium-quality microgreens,
-                herbal powders, natural spices,
-                and dehydrated vegetables grown and
-                prepared with freshness, hygiene,
-                and sustainability.
-
-              </p>
-
-            </FadeUp>
-
-            <FadeUp delay={0.6}>
-
-              <div className="mt-10 flex flex-wrap gap-5">
-
-                <Button href="#products">
-                  Explore Products
-                </Button>
-
-                <Button
-                  href="#contact"
-                  variant="outline"
-                >
-                  Contact Us
-                </Button>
-
-              </div>
-
-            </FadeUp>
-
-            {/* Feature Cards */}
-
-            <FadeUp delay={0.8}>
-
-              <div className="mt-14 grid grid-cols-3 gap-5">
-
-                <div className="rounded-2xl bg-white p-5 text-center shadow-lg">
-
-                  <Leaf
-                    className="mx-auto text-green-700"
-                    size={34}
-                  />
-
-                  <p className="mt-3 text-sm font-semibold text-green-900">
-                    100% Natural
-                  </p>
-
-                </div>
-
-                <div className="rounded-2xl bg-white p-5 text-center shadow-lg">
-
-                  <Sprout
-                    className="mx-auto text-green-700"
-                    size={34}
-                  />
-
-                  <p className="mt-3 text-sm font-semibold text-green-900">
-                    Fresh Daily
-                  </p>
-
-                </div>
-
-                <div className="rounded-2xl bg-white p-5 text-center shadow-lg">
-
-                  <ShieldCheck
-                    className="mx-auto text-green-700"
-                    size={34}
-                  />
-
-                  <p className="mt-3 text-sm font-semibold text-green-900">
-                    Hygienic
-                  </p>
-
-                </div>
-
-              </div>
-
-            </FadeUp>
-
-          </div>
-
-          {/* RIGHT */}
-
-          <FadeUp delay={0.5}>
-
-<div className="relative flex justify-center">
-                    <div className="absolute -inset-4 rounded-[40px] bg-gradient-to-r from-green-300 to-green-100 opacity-40 blur-2xl" />
-
-              <Image
-                src="/images/hero.jpg"
-                alt="Fresh Microgreens"
-                width={650}
-                height={700}
-                priority
-                className="relative rounded-[40px] shadow-2xl"
-              />
-
+        {/* LEFT CONTENT */}
+        <div className="relative z-10 order-2 lg:order-1">
+          <FadeUp>
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full bg-[#d9fbe6] px-5 py-2 text-sm font-semibold text-[#087c39]">
+              <span>🌱</span>
+              Fresh • Natural • Healthy
             </div>
-
           </FadeUp>
 
+          <FadeUp delay={0.15}>
+            <h1 className="max-w-xl text-5xl font-extrabold leading-[1.12] tracking-tight text-[#07351e] sm:text-6xl lg:text-6xl xl:text-7xl">
+              Bringing
+              <span className="block text-[#08a844]">
+                Nature's
+              </span>
+              <span className="block text-[#08a844]">
+                Goodness
+              </span>
+              <span className="block">
+                To Every Home
+              </span>
+            </h1>
+          </FadeUp>
+
+          <FadeUp delay={0.3}>
+            <p className="mt-6 max-w-lg text-base leading-8 text-[#355b45] sm:text-lg">
+              Discover the freshness of microgreens with
+              Thuliragam — Grow Healthier Tomorrow.
+            </p>
+          </FadeUp>
+
+          <FadeUp delay={0.45}>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Button href="#products">
+                Explore Microgreens
+              </Button>
+
+              <Button href="#contact" variant="outline">
+                Enquire Now
+              </Button>
+            </div>
+          </FadeUp>
         </div>
+
+        
+        {/* RIGHT IMAGE */}
+        <FadeUp delay={0.2}>
+<div className="relative order-1 flex h-full items-center lg:order-2 lg:-translate-y-12">            <div className="absolute -inset-4 rounded-[40px] bg-green-200/30 blur-2xl" />
+
+            <img
+              src="/images/hero.jpg"
+              alt="Fresh and colourful Thuliragam microgreens"
+              className="relative h-[300px] w-full rounded-[32px] object-cover shadow-[0_25px_60px_rgba(10,80,40,0.20)] sm:h-[380px] lg:h-[390px]"
+            />
+          </div>
+        </FadeUp>
 
       </div>
     </section>
