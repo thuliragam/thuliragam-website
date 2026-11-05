@@ -1,7 +1,8 @@
+
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
- const baseUrl = "https://thuliragam.in";
+  const baseUrl = "https://www.thuliragam.in";
 
   return [
     {
@@ -17,22 +18,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/products/herbal-powders`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/products/natural-spices`,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.9,
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/products/dehydrated-vegetables`,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.9,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/products/herbal-powders`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
     },
   ];
 }
