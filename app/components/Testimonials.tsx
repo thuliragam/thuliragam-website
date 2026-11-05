@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Star } from "lucide-react";
+import { Star, Quote, MessageCircle } from "lucide-react";
 
 import { supabase } from "@/lib/supabase/client";
 import FadeUp from "./FadeUp";
@@ -65,61 +65,107 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <SectionContainer id="testimonials" className="bg-white">
+    <SectionContainer
+      id="testimonials"
+      className="bg-[#FBFBF3]"
+    >
       <SectionTitle
         badge="⭐ TESTIMONIALS"
-        title="What Our"
-        highlight="Customers Say"
-        description="Customer satisfaction inspires us to continue delivering fresh, natural, and high-quality products."
+        title="Words That"
+        highlight="Grow Our Journey"
+        description="Every happy customer inspires us to bring more freshness, goodness, and care to every home."
       />
 
       {loading ? (
-        <p className="mt-12 text-center text-gray-500">
+        <p className="mt-10 text-center text-[#063D20]/60">
           Loading customer reviews...
         </p>
       ) : (
-        <div className="mt-20 grid items-stretch gap-8 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <FadeUp key={testimonial.id} delay={index * 0.15}>
-              <div className="flex h-full flex-col rounded-3xl border border-green-100 bg-white p-8 shadow-lg transition-all hover:-translate-y-2 hover:border-green-300 hover:shadow-2xl">
-                <div className="mb-6 flex">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star
-                      key={i}
-                      size={20}
-                      className="fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                </div>
+        <>
+          {testimonials.length > 0 && (
+            <div className="mt-10 grid items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {testimonials.map((testimonial, index) => (
+                <FadeUp key={testimonial.id} delay={index * 0.12}>
+                  <article className="group relative flex h-full min-h-[270px] flex-col overflow-hidden rounded-[26px] border border-[#ffffff]/10 bg-[#063D20] p-6 shadow-[0_12px_35px_rgba(6,61,32,0.12)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(6,61,32,0.22)] sm:p-7">
 
-                <p className="flex-1 leading-8 text-gray-600">
-                  "{testimonial.review}"
-                </p>
+                    {/* Decorative quote */}
+                    <div className="absolute -right-3 -top-5 opacity-[0.08] transition-transform duration-500 group-hover:scale-110">
+                      <Quote
+                        size={112}
+                        className="text-[#B9E65A]"
+                        strokeWidth={1.5}
+                      />
+                    </div>
 
-                <div className="mt-8 flex items-center gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-700 text-xl font-bold text-white">
-                    {testimonial.name.charAt(0)}
-                  </div>
+                    {/* Rating */}
+                    <div className="relative z-10 mb-5 flex items-center gap-1">
+                      {Array.from({
+                        length: Math.max(0, Math.min(5, testimonial.rating)),
+                      }).map((_, i) => (
+                        <Star
+                          key={i}
+                          size={17}
+                          className="fill-[#B9E65A] text-[#B9E65A]"
+                        />
+                      ))}
+                      <span className="ml-2 text-xs font-semibold tracking-wider text-[#B9E65A]/80">
+                        {testimonial.rating}.0 / 5
+                      </span>
+                    </div>
 
-                  <div>
-                    <h3 className="font-bold text-green-900">
-                      {testimonial.name}
-                    </h3>
-                    <p className="text-sm text-gray-500">
-                      {testimonial.role}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </FadeUp>
-          ))}
+                    {/* Review */}
+                    <div className="relative z-10 flex-1">
+                      <p className="text-[15px] leading-7 text-white/85">
+                        “{testimonial.review}”
+                      </p>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="my-6 h-px w-full bg-white/15" />
+
+                    {/* Customer details */}
+                    <div className="relative z-10 flex items-center gap-3">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#B9E65A]/40 bg-[#B9E65A] text-lg font-bold text-[#063D20]">
+                        {testimonial.name.charAt(0).toUpperCase()}
+                      </div>
+
+                      <div className="min-w-0">
+                        <h3 className="truncate text-sm font-bold tracking-wide text-white">
+                          {testimonial.name}
+                        </h3>
+                        <p className="mt-1 truncate text-xs text-[#B9E65A]/80">
+                          {testimonial.role}
+                        </p>
+                      </div>
+
+                      <div className="ml-auto">
+                        <MessageCircle
+                          size={19}
+                          className="text-[#B9E65A]/60"
+                        />
+                      </div>
+                    </div>
+                  </article>
+                </FadeUp>
+              ))}
+            </div>
+          )}
 
           {!testimonials.length && (
-            <p className="col-span-full text-center text-gray-500">
-              Customer reviews will be added soon.
-            </p>
+            <div className="mt-10 rounded-3xl border border-[#075B25]/10 bg-white px-6 py-12 text-center">
+              <MessageCircle
+                size={34}
+                className="mx-auto mb-3 text-[#00A844]"
+              />
+              <p className="font-medium text-[#063D20]">
+                Customer reviews will be added soon.
+              </p>
+              <p className="mt-1 text-sm text-[#063D20]/55">
+                We look forward to sharing their experiences with you.
+              </p>
+            </div>
           )}
-        </div>
+        </>
       )}
     </SectionContainer>
   );

@@ -1,5 +1,7 @@
+
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
 interface CategoryHeroProps {
@@ -13,87 +15,104 @@ export default function CategoryHero({
 }: CategoryHeroProps) {
   const reduceMotion = useReducedMotion();
 
+  const reveal = {
+    hidden: {
+      opacity: 0,
+      y: 35,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  };
+
   return (
-    <section className="relative isolate overflow-hidden rounded-[2rem] border border-emerald-300/50 bg-gradient-to-br from-[#047857] via-[#059669] to-[#65A30D] px-6 py-14 text-white shadow-[0_24px_70px_rgba(5,150,105,0.22)] sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-      {/* Decorative background shapes */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-lime-300/25 blur-3xl sm:h-80 sm:w-80"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-24 left-1/3 h-64 w-64 rounded-full bg-emerald-200/20 blur-3xl"
-      />
+    <motion.section
+      initial={reduceMotion ? false : "hidden"}
+      whileInView="visible"
+      viewport={{
+        once: false,
+        amount: 0.2,
+      }}
+      transition={{
+        duration: reduceMotion ? 0 : 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      variants={reveal}
+      className="relative isolate overflow-hidden rounded-[1.75rem] bg-[#123D2D] text-white shadow-xl"
+    >
+      <div className="grid items-center gap-8 px-6 py-9 sm:px-10 sm:py-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:px-14 lg:py-14">
 
-      {/* Decorative leaf symbols */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-8 top-8 select-none text-5xl opacity-30 sm:right-16 sm:top-12 sm:text-7xl"
-      >
-        🌿
+        {/* LEFT CONTENT */}
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.8,
+            delay: 0.15,
+          }}
+          className="relative z-10"
+        >
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-lime-200/30 bg-white/10 px-4 py-2">
+            <span className="text-lime-300">✦</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-lime-100 sm:text-xs">
+              THULIRAGAM · FRESH FROM NATURE
+            </span>
+          </div>
+
+          <h1 className="max-w-xl text-3xl font-black leading-[1.12] tracking-tight sm:text-4xl lg:text-5xl">
+            {title}
+          </h1>
+
+          <p className="mt-5 max-w-lg text-sm leading-7 text-emerald-100/90 sm:text-base">
+            {description}
+          </p>
+
+          <div className="mt-7 h-1 w-16 rounded-full bg-[#D9F36A]" />
+        </motion.div>
+
+        {/* RIGHT IMAGE */}
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, scale: 0.94 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{
+            duration: reduceMotion ? 0 : 1,
+            delay: 0.2,
+          }}
+          className="relative"
+        >
+          <div className="relative h-[230px] overflow-hidden rounded-2xl border border-white/15 shadow-2xl sm:h-[300px] lg:h-[350px]">
+            <Image
+              src="/images/microgreens.jpg"
+              alt="Fresh microgreens grown by Thuliragam"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover transition-transform duration-700 hover:scale-105"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-[#123D2D]/30 via-transparent to-transparent" />
+          </div>
+
+          <div className="absolute -bottom-4 -left-3 rounded-xl bg-[#D9F36A] px-5 py-3 text-[#173D2D] shadow-lg sm:-left-5">
+            <p className="text-xs font-black uppercase tracking-wider">
+              Naturally Fresh
+            </p>
+            <p className="mt-1 text-[10px] font-medium">
+              Goodness in Every Green
+            </p>
+          </div>
+        </motion.div>
+
       </div>
 
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-8 right-10 select-none text-4xl opacity-25 sm:bottom-12 sm:right-24 sm:text-6xl"
-      >
-        🍃
-      </div>
+      {/* BACKGROUND DECORATION */}
+      <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-lime-400/10 blur-3xl" />
 
-      <motion.div
-        initial={reduceMotion ? false : { opacity: 0, y: 22 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: reduceMotion ? 0 : 0.7, ease: "easeOut" }}
-        className="relative z-10 max-w-3xl"
-      >
-        {/* Brand label */}
-        <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/15 px-4 py-2.5 shadow-sm backdrop-blur-md">
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-lime-300 text-sm text-emerald-950">
-            ✦
-          </span>
+      <div className="pointer-events-none absolute -bottom-24 left-1/4 h-64 w-64 rounded-full bg-emerald-400/10 blur-3xl" />
 
-          <span className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-white sm:text-xs">
-            Thuliragam · Fresh from Nature
-          </span>
-        </div>
-
-        {/* Main heading */}
-        <h1 className="max-w-3xl text-4xl font-black leading-[1.1] tracking-[-0.04em] text-white drop-shadow-sm sm:text-5xl md:text-6xl lg:text-7xl">
-          {title}
-          <span className="mt-3 block text-lime-200">
-            Small Greens. Big Possibilities.
-          </span>
-        </h1>
-
-        {/* Description */}
-        <p className="mt-7 max-w-2xl text-base leading-8 text-emerald-50 sm:text-lg sm:leading-9">
-          {description}
-        </p>
-
-        {/* Decorative divider */}
-        <div className="mt-8 flex items-center gap-2">
-          <span className="h-1.5 w-12 rounded-full bg-lime-200" />
-          <span className="h-1.5 w-7 rounded-full bg-white/80" />
-          <span className="h-1.5 w-4 rounded-full bg-white/50" />
-        </div>
-
-        {/* Supporting message */}
-        <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-white/95">
-          <span className="inline-flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-lime-200">
-              ✓
-            </span>
-            Freshly grown
-          </span>
-
-          <span className="inline-flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-lime-200">
-              ✓
-            </span>
-            Harvested with care
-          </span>
-        </div>
-      </motion.div>
-    </section>
+    </motion.section>
   );
 }

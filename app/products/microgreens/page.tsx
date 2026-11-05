@@ -1,14 +1,11 @@
+
 import SectionContainer from "@/app/components/SectionContainer";
 import CategoryHero from "@/app/components/products/CategoryHero";
-import MicrogreensBenefits from "@/app/components/products/MicrogreensBenefits";
 import MicrogreensHealthBenefits from "@/app/components/products/MicrogreensHealthBenefits";
 import LiveMicrogreensGrid from "@/app/components/products/LiveMicrogreensGrid";
-import MicrogreensGrowingProcess from "@/app/components/products/MicrogreensGrowingProcess";
-import MicrogreensPackaging from "@/app/components/products/MicrogreensPackaging";
 import MicrogreensCTA from "@/app/components/products/MicrogreensCTA";
-import MicrogreensTestimonials from "@/app/components/products/MicrogreensTestimonials";
 import MicrogreensWhoWeServe from "@/app/components/products/MicrogreensWhoWeServe";
-import MicrogreensTrust from "@/app/components/products/MicrogreensTrust";
+import ScrollReveal from "@/app/components/ScrollReveal";
 
 export const metadata = {
   title: "Premium Microgreens | Thuliragam",
@@ -19,24 +16,25 @@ export const metadata = {
 export default function MicrogreensPage() {
   return (
     <main>
-      <SectionContainer className="pt-32 pb-20">
+      {/* 1. CATEGORY HERO */}
+      <SectionContainer className="pt-32 pb-10">
         <CategoryHero
           title="Premium Microgreens"
-          description="At Thuliragam, we cultivate a carefully selected collection of 20 premium microgreen varieties using natural and hygienic growing practices. Harvested at their nutritional peak, our microgreens are rich in vitamins, minerals, antioxidants, and fresh flavor."
+          description="At Thuliragam, we cultivate a carefully selected collection of 20 premium microgreen varieties using natural and hygienic growing practices. Harvested at their nutritional peak, our microgreens bring vibrant flavour, colour and nutrition to everyday meals."
         />
 
-<LiveMicrogreensGrid />
+        {/* 2. MICROGREENS COLLECTION */}
+        <LiveMicrogreensGrid />
       </SectionContainer>
-     <MicrogreensTrust />
-      <MicrogreensBenefits />
 
+      {/* 3. HEALTH BENEFITS */}
       <MicrogreensHealthBenefits />
-      <MicrogreensGrowingProcess />
-      <MicrogreensPackaging />
-      <MicrogreensTestimonials />
+
+      {/* 4. WHO WE SERVE */}
       <MicrogreensWhoWeServe />
+
+      {/* 5. GET IN TOUCH */}
       <MicrogreensCTA />
-      
     </main>
   );
 }

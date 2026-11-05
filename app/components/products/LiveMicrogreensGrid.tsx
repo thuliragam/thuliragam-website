@@ -4,7 +4,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase/client";
 import CategoryProductGrid from "./CategoryProductGrid";
-import { useCart } from "@/app/components/cart/CartContext";
 
 interface Microgreen {
   id: number;
@@ -17,7 +16,8 @@ interface Microgreen {
     | "Germinating"
     | "Growing"
     | "Ready to Harvest"
-    | "Out of Stock";
+    | "Out of Stock"
+    | "Request Microgreens";
   taste: string | null;
   texture: string | null;
   uses: string | null;
@@ -28,8 +28,6 @@ export default function LiveMicrogreensGrid() {
   const [products, setProducts] = useState<Microgreen[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
-  const { addToCart } = useCart();
 
   useEffect(() => {
     let mounted = true;
@@ -46,7 +44,7 @@ export default function LiveMicrogreensGrid() {
         console.error("MICROGREENS FETCH ERROR:", error);
         setError(error.message);
       } else {
-        setProducts(data ?? []);
+        setProducts((data ?? []) as Microgreen[]);
         setError("");
       }
 
@@ -101,16 +99,17 @@ export default function LiveMicrogreensGrid() {
       product.price_50g === null
         ? undefined
         : Number(product.price_50g),
-    status: product.status,
+
+    status:
+      product.status === "Out of Stock"
+        ? ("Request Microgreens" as const)
+        : product.status,
+
     taste: product.taste || undefined,
     texture: product.texture || undefined,
     uses: product.uses || undefined,
     nutrition: product.nutrition || undefined,
   }));
 
-  return (
-    <CategoryProductGrid
-      products={displayProducts}
-    />
-  );
+  return <CategoryProductGrid products={displayProducts} />;
 }

@@ -53,133 +53,169 @@ export default function FeaturedProducts() {
   return (
     <SectionContainer
       id="products"
-      className="bg-[#F0FDF4]"
+      className="relative bg-[#FBFBF3] !py-7 lg:!py-5"
     >
-      <SectionTitle
-        vibrant
-        badge="GROWN WITH CARE"
-        title="Small Greens,"
-        highlight="Big Possibilities"
-        description="Explore the world of microgreens, from tiny seeds to fresh harvests."
-      />
+      {/* SECTION TITLE */}
+      <div className="relative z-10">
+        <SectionTitle
+          vibrant
+          badge="GROWN WITH CARE"
+          title="Small Greens,"
+          highlight="Big Possibilities"
+          description="Explore the world of microgreens, from tiny seeds to fresh harvests."
+        />
+      </div>
 
-      {/* Featured product */}
-      <div className="mx-auto mt-12 max-w-6xl sm:mt-16">
+      {/* FEATURED PRODUCT */}
+      <div className="relative z-10 mx-auto mt-7 max-w-6xl lg:mt-9">
+
         {products.map((product, index) => (
-          <FadeUp
-            key={product.title}
-            delay={index * 0.15}
-            className="h-full"
-          >
-            <article className="group grid overflow-hidden rounded-[1.75rem] border border-emerald-100 bg-white shadow-[0_12px_40px_rgba(5,150,105,0.08)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(5,150,105,0.15)] md:grid-cols-2">
+          <FadeUp key={product.title} delay={index * 0.12}>
+            <article className="group grid overflow-hidden rounded-[30px] border border-[#D9E8CC] bg-[#063D20] shadow-[0_20px_60px_rgba(6,61,32,0.13)] transition-all duration-500 hover:shadow-[0_28px_70px_rgba(6,61,32,0.22)] md:grid-cols-[0.88fr_1.12fr]">
 
-              {/* Product photograph */}
-              <div className="relative min-h-[280px] overflow-hidden bg-emerald-100 sm:min-h-[380px] lg:min-h-[440px]">
+              {/* LEFT: EDITORIAL PHOTOGRAPH */}
+              <div className="relative min-h-[270px] overflow-hidden sm:min-h-[350px] lg:min-h-[410px]">
+
                 <Image
                   src={product.image}
                   alt={product.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  priority={false}
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#064E3B]/55 via-transparent to-transparent" />
+                {/* IMAGE OVERLAY */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#021C10]/95 via-[#063D20]/35 to-[#063D20]/10" />
 
-                <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/50 bg-white/95 px-4 py-2 text-xs font-semibold text-emerald-900 shadow-sm backdrop-blur">
-                  <Sprout size={17} className="text-emerald-600" />
-                  GROWN WITH CARE
+<div className="absolute inset-0 bg-gradient-to-r from-[#021C10]/20 via-transparent to-transparent" />
+
+                {/* TOP BADGE */}
+                <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#063D20]/80 px-4 py-2.5 text-[10px] font-bold uppercase tracking-[0.16em] text-[#D9F99D] shadow-lg backdrop-blur-md">
+                  <Sprout size={15} />
+                  Grown with care
                 </div>
 
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-emerald-100">
-                    FROM SEED TO HARVEST
-                  </p>
-                  <p className="mt-2 text-2xl font-semibold leading-snug text-white sm:text-3xl">
-                    Freshness begins with nature.
-                  </p>
+                <div className="absolute bottom-6 left-6 right-6 z-10 sm:bottom-8 sm:left-8">
+
+  <p className="text-[11px] font-extrabold uppercase tracking-[0.3em] text-[#D8FF85] drop-shadow-md">
+    FROM SEED TO HARVEST
+  </p>
+
+  <h3 className="mt-3 max-w-sm font-serif text-3xl font-bold leading-tight text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.8)] sm:text-4xl lg:text-[42px]">
+    Freshness
+    <span className="block italic text-[#C7F36B] drop-shadow-[0_3px_12px_rgba(0,0,0,0.8)]">
+      begins with nature.
+    </span>
+  </h3>
+
+  <div className="mt-5 h-[3px] w-14 rounded-full bg-[#B9E65A] shadow-[0_0_12px_rgba(185,230,90,0.6)]" />
+
+</div>
+
+                {/* IMAGE DECORATION */}
+                <div className="pointer-events-none absolute bottom-6 right-6 opacity-30">
+                  <Leaf size={58} strokeWidth={0.8} className="rotate-[-30deg] text-[#B9E65A]" />
                 </div>
               </div>
 
-              {/* Product information */}
-              <div className="flex flex-col justify-center p-6 sm:p-9 lg:p-12">
+              {/* RIGHT: PRODUCT INFORMATION */}
+              <div className="relative flex flex-col justify-center overflow-hidden p-6 sm:p-8 lg:p-9">
 
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-100 bg-emerald-50 text-emerald-700">
-                  <Leaf size={25} />
+                {/* DECORATIVE BACKGROUND */}
+                <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full border border-[#B9E65A]/10" />
+                <div className="pointer-events-none absolute -right-12 -top-16 h-44 w-44 rounded-full bg-[#B9E65A]/[0.05] blur-2xl" />
+
+                {/* BRAND ICON */}
+                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-[#B9E65A]/30 bg-[#B9E65A]/15 text-[#B9E65A]">
+                  <Leaf size={24} />
                 </div>
 
-                <p className="mt-6 text-xs font-bold uppercase tracking-[0.28em] text-emerald-700">
-                  THULIRAGAM
-                </p>
+                {/* TITLE */}
+                <div className="relative z-10 mt-4">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#B9E65A]">
+                    THULIRAGAM COLLECTION
+                  </p>
 
-                <h3 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-[#064E3B] sm:text-4xl">
-                  {product.title}
-                </h3>
+                  <h3 className="mt-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-[42px]">
+                    {product.title}
+                  </h3>
 
-                <p className="mt-4 text-sm leading-7 text-[#52665A] sm:text-base sm:leading-8">
-                  {product.description}
-                </p>
+                  <p className="mt-3 max-w-lg text-sm leading-7 text-white/70">
+                    {product.description}
+                  </p>
+                </div>
 
-                {/* Information customers can explore */}
-                <div className="mt-7 grid gap-4 sm:grid-cols-2">
+                {/* PRODUCT HIGHLIGHTS */}
+                <div className="relative z-10 mt-5 grid grid-cols-2 gap-3">
+
                   {productHighlights.map((item) => {
                     const Icon = item.icon;
 
                     return (
                       <div
                         key={item.title}
-                        className="flex items-start gap-3 rounded-xl border border-emerald-100 bg-[#F7FDF8] p-3 transition-colors duration-300 hover:bg-emerald-50"
+                        className="group/item flex min-h-[76px] items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.055] p-3 transition-all duration-300 hover:border-[#B9E65A]/40 hover:bg-[#B9E65A]/10"
                       >
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">
-                          <Icon size={19} />
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#B9E65A] text-[#063D20] transition-transform duration-300 group-hover/item:rotate-[-8deg]">
+                          <Icon size={18} />
                         </div>
 
-                        <div>
-                          <h4 className="text-sm font-bold text-[#064E3B]">
+                        <div className="min-w-0">
+                          <h4 className="text-xs font-bold text-white sm:text-sm">
                             {item.title}
                           </h4>
-                          <p className="mt-1 text-xs leading-5 text-[#627468]">
+
+                          <p className="mt-1 text-[10px] leading-4 text-white/55 sm:text-xs sm:leading-5">
                             {item.description}
                           </p>
                         </div>
                       </div>
                     );
                   })}
+
                 </div>
 
-                {/* Existing product link */}
-                <div className="mt-8">
+                {/* CTA */}
+                <div className="relative z-10 mt-6">
                   <Button href={product.link}>
                     Explore Microgreens
                     <ArrowRight className="ml-2" size={18} />
                   </Button>
                 </div>
 
-                <p className="mt-4 text-xs leading-6 text-gray-500">
+                {/* CATALOGUE NOTE */}
+                <p className="relative z-10 mt-3 text-[11px] leading-5 text-white/50">
                   Explore varieties, growing information, availability,
                   and product details.
                 </p>
+
               </div>
             </article>
           </FadeUp>
         ))}
       </div>
 
-      {/* Product information footer */}
-      <FadeUp delay={0.25}>
-        <div className="mx-auto mt-10 flex max-w-6xl flex-col items-center justify-center gap-3 rounded-2xl border border-emerald-200 bg-white/80 px-5 py-5 text-center sm:flex-row sm:gap-4">
+      {/* CATALOGUE INFORMATION */}
+      <FadeUp delay={0.2}>
+        <div className="relative z-10 mx-auto mt-5 flex max-w-6xl flex-wrap items-center justify-center gap-3 rounded-2xl border border-[#DCEBCF] bg-white px-5 py-3.5 shadow-sm">
+
           <ShoppingBasket
-            size={22}
-            className="shrink-0 text-emerald-700"
+            size={21}
+            className="shrink-0 text-[#00A844]"
           />
 
-          <p className="text-sm leading-6 text-[#52665A]">
+          <p className="text-center text-xs leading-5 text-[#52665A] sm:text-sm">
             Looking for variety-specific pricing, including 50 g packs?
-            <span className="font-semibold text-[#047857]">
-              {" "}Explore our product catalogue for details.
+
+            <span className="ml-1 font-bold text-[#075B25]">
+              Explore our product catalogue for details.
             </span>
           </p>
+
         </div>
       </FadeUp>
+
     </SectionContainer>
   );
 }

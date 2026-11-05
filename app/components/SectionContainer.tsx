@@ -15,7 +15,13 @@ export default function SectionContainer({
   return (
     <section
       id={id}
-      className={`relative isolate overflow-hidden py-16 sm:py-20 lg:py-24 ${className}`}
+      className={`
+        relative isolate flex w-full items-center overflow-hidden
+        bg-[#FBFBF3]
+        py-10 sm:py-12 lg:py-8
+        lg:min-h-[calc(100svh-122px)]
+        ${className}
+      `}
     >
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         {children}

@@ -4,64 +4,60 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Menu,
-  X,
-  ChevronDown,
-} from "lucide-react";
+import { Menu, X, ChevronDown, Sprout } from "lucide-react";
+
+const nutritionMessages = [
+  { nutrient: "VITAMIN A", benefit: "Supports normal vision and immune function" },
+  { nutrient: "VITAMIN C", benefit: "Supports collagen formation and antioxidant protection" },
+  { nutrient: "VITAMIN E", benefit: "Helps protect cells from oxidative damage" },
+  { nutrient: "VITAMIN K", benefit: "Supports bone health and normal blood clotting" },
+  { nutrient: "FOLATE B9", benefit: "Supports cell growth and DNA formation" },
+  { nutrient: "IRON", benefit: "Helps transport oxygen throughout the body" },
+  { nutrient: "CALCIUM", benefit: "Supports healthy bones and teeth" },
+  { nutrient: "MAGNESIUM", benefit: "Supports normal muscle and nerve function" },
+  { nutrient: "POTASSIUM", benefit: "Supports normal muscle function" },
+  { nutrient: "ZINC", benefit: "Supports immunity and cell growth" },
+  { nutrient: "PLANT PROTEIN", benefit: "Supports body growth and repair" },
+  { nutrient: "DIETARY FIBRE", benefit: "Supports healthy digestion" },
+  { nutrient: "ANTIOXIDANTS", benefit: "Help protect cells against oxidative stress" },
+];
 
 const navItems = [
   { name: "Home", href: "/#home" },
   { name: "About", href: "/#about" },
   { name: "Benefits", href: "/#benefits" },
-  { name: "Gallery", href: "/#gallery" },
   { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 const productItems = [
   { name: "Fresh Microgreens", href: "/products/microgreens" },
 ];
 
-const nutritionMessages = [
-  { nutrient: "VITAMIN A", benefit: "Supports normal vision and immune function" },
-  { nutrient: "VITAMIN C", benefit: "Supports collagen formation and antioxidant protection" },
-  { nutrient: "VITAMIN E", benefit: "Helps protect cells from oxidative damage" },
-  { nutrient: "VITAMIN K", benefit: "Supports normal blood clotting and bone health" },
-  { nutrient: "FOLATE (B9)", benefit: "Supports cell growth and DNA formation" },
-  { nutrient: "IRON", benefit: "Helps transport oxygen throughout the body" },
-  { nutrient: "CALCIUM", benefit: "Supports healthy bones and teeth" },
-  { nutrient: "MAGNESIUM", benefit: "Supports normal muscle and nerve function" },
-  { nutrient: "POTASSIUM", benefit: "Supports normal muscle and nerve function" },
-  { nutrient: "ZINC", benefit: "Supports immunity and normal cell growth" },
-  { nutrient: "PLANT PROTEIN", benefit: "Provides building blocks for body growth and repair" },
-  { nutrient: "DIETARY FIBRE", benefit: "Supports healthy digestion" },
-  { nutrient: "ANTIOXIDANTS", benefit: "Help protect cells against oxidative stress" },
-];
-
 function NutritionTicker() {
   const messages = [...nutritionMessages, ...nutritionMessages];
 
   return (
-    <div
-      className="relative overflow-hidden border-b border-[#00A844]/40 bg-[#063D20] py-3"
-      aria-label="Microgreen nutrient information"
-    >
-      <div className="flex w-max animate-nutrition-scroll hover:[animation-play-state:paused]">
+    <div className="w-full overflow-hidden bg-[#063D20] py-2.5">
+      <div
+        className="nutrition-track flex w-max items-center hover:[animation-play-state:paused]"
+        aria-label="Microgreen nutrition information"
+      >
         {messages.map((item, index) => (
           <div
             key={`${item.nutrient}-${index}`}
-            className="flex shrink-0 items-center gap-5 px-7"
             aria-hidden={index >= nutritionMessages.length}
+            className="flex shrink-0 items-center gap-4 px-6 sm:gap-5 sm:px-8"
           >
-            <span className="whitespace-nowrap text-[10px] font-extrabold tracking-[0.2em] text-[#39E75F] sm:text-xs">
+            <span className="whitespace-nowrap text-[10px] font-extrabold tracking-[0.18em] text-[#B9E65A] sm:text-xs">
               {item.nutrient}
             </span>
 
-            <span className="whitespace-nowrap text-xs font-medium tracking-wide text-white/90 sm:text-sm">
+            <span className="whitespace-nowrap text-[11px] text-white/90 sm:text-sm">
               {item.benefit}
             </span>
 
-            <span className="text-sm text-[#39E75F]">◆</span>
+            <span className="text-xs text-[#B9E65A]">◆</span>
           </div>
         ))}
       </div>
@@ -73,22 +69,19 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [productOpen, setProductOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const sections = ["home", "about", "benefits", "contact"];
 
-      for (const item of navItems) {
-        const selector = item.href.replace("/", "");
-        const section = document.querySelector(selector);
-
+      for (const id of sections) {
+        const section = document.getElementById(id);
         if (!section) continue;
 
         const rect = section.getBoundingClientRect();
 
-        if (rect.top <= 120 && rect.bottom >= 120) {
-          setActiveSection(selector.replace("#", ""));
+        if (rect.top <= 140 && rect.bottom >= 140) {
+          setActiveSection(id);
           break;
         }
       }
@@ -100,59 +93,56 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const linkStyle = (id: string) =>
+    `relative whitespace-nowrap font-medium transition-colors duration-300 ${
+      activeSection === id
+        ? "text-[#075B25]"
+        : "text-[#252D23] hover:text-[#087C37]"
+    }`;
+
   return (
     <header className="sticky top-0 z-[100] w-full">
+
+      {/* NUTRITION SCROLLING BAR */}
       <NutritionTicker />
 
-      <div
-        className={`transition-all duration-300 ${
-          scrolled
-            ? "bg-[#006B35] shadow-xl border-b border-[#00A844]"
-            : "bg-[#006B35]"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-8 py-2">
+      {/* MAIN NAVIGATION */}
+      <div className="border-b border-[#E9E9DC] bg-[#FBFBF3]/95 backdrop-blur-md">
+        <div className="mx-auto flex h-[82px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-10">
 
           {/* LOGO */}
-          <Link href="/" className="group">
+          <Link href="/" className="shrink-0">
             <Image
-              src="/logo.png"
+              src="/images/thuliragam-logo.png"
               alt="Thuliragam Logo"
-              width={190}
-              height={70}
+              width={180}
+              height={120}
               priority
-className="w-32 md:w-40 h-auto transition-transform duration-300 group-hover:scale-105"            />
+              className="h-auto max-h-[72px] w-[115px] object-contain transition-transform duration-300 hover:scale-105 sm:w-[135px] lg:w-[155px]"
+            />
           </Link>
 
           {/* DESKTOP NAVIGATION */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden items-center gap-6 lg:gap-9 md:flex">
 
-            {navItems.slice(0, 2).map((item) => {
-              const active =
-                activeSection === item.href.replace("/#", "");
-
-              return (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={`relative group font-medium transition ${
-                    active
-                      ? "text-white"
-                      : "text-white/90 hover:text-[#39E75F]"
+            {navItems.slice(0, 2).map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`group relative text-[15px] ${linkStyle(item.name.toLowerCase())}`}
+              >
+                {item.name}
+                <span
+                  className={`absolute -bottom-2 left-0 h-[2px] bg-[#087C37] transition-all duration-300 ${
+                    activeSection === item.name.toLowerCase()
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
                   }`}
-                >
-                  {item.name}
+                />
+              </Link>
+            ))}
 
-                  <span
-                    className={`absolute left-0 -bottom-1 h-[2px] bg-[#39E75F] transition-all duration-300 ${
-                      active ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                  />
-                </a>
-              );
-            })}
-
-            {/* PRODUCTS DROPDOWN */}
+            {/* MICROGREENS DROPDOWN */}
             <div
               className="relative"
               onMouseEnter={() => setProductOpen(true)}
@@ -160,27 +150,28 @@ className="w-32 md:w-40 h-auto transition-transform duration-300 group-hover:sca
             >
               <button
                 type="button"
-                className="flex items-center gap-1 font-medium text-white hover:text-[#39E75F] transition"
+                onClick={() => setProductOpen(!productOpen)}
                 aria-expanded={productOpen}
+                className="flex items-center gap-1 whitespace-nowrap text-[15px] font-medium text-[#252D23] transition hover:text-[#087C37]"
               >
-                Products
-
+                Microgreens
                 <ChevronDown
-                  size={18}
-                  className={`transition ${
+                  size={17}
+                  className={`transition-transform duration-300 ${
                     productOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
 
               {productOpen && (
-                <div className="absolute left-0 top-full pt-2 w-64 z-50">
-                  <div className="rounded-2xl bg-white shadow-2xl border border-[#D9FBE6] py-3">
+                <div className="absolute left-0 top-full z-50 w-64 pt-4">
+                  <div className="rounded-xl border border-[#E5EBD9] bg-[#FFFDF5] py-3 shadow-xl">
                     {productItems.map((product) => (
                       <Link
                         key={product.name}
                         href={product.href}
-                        className="block px-5 py-3 text-[#006B35] hover:bg-[#D9FBE6] hover:text-[#00A844] transition"
+                        onClick={() => setProductOpen(false)}
+                        className="block px-5 py-3 text-sm text-[#174D2C] transition hover:bg-[#EDF6E9]"
                       >
                         {product.name}
                       </Link>
@@ -190,129 +181,110 @@ className="w-32 md:w-40 h-auto transition-transform duration-300 group-hover:sca
               )}
             </div>
 
-            {navItems.slice(2).map((item) => {
-              const active =
-                activeSection === item.href.replace("/#", "");
-
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`relative group font-medium transition ${
-                    active
-                      ? "text-white"
-                      : "text-white/90 hover:text-[#39E75F]"
+            {navItems.slice(2).map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`group relative text-[15px] ${linkStyle(item.name.toLowerCase())}`}
+              >
+                {item.name}
+                <span
+                  className={`absolute -bottom-2 left-0 h-[2px] bg-[#087C37] transition-all duration-300 ${
+                    activeSection === item.name.toLowerCase()
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
                   }`}
-                >
-                  {item.name}
-
-                  <span
-                    className={`absolute left-0 -bottom-1 h-[2px] bg-[#39E75F] transition-all duration-300 ${
-                      active ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                  />
-                </Link>
-              );
-            })}
+                />
+              </Link>
+            ))}
           </nav>
 
-          {/* DESKTOP CONTACT BUTTON */}
-          <div className="hidden md:flex items-center">
-            <Link
-              href="/#contact"
-              className="inline-flex items-center rounded-full bg-white px-7 py-3 font-semibold text-[#008F3D] shadow-lg hover:bg-[#D9FBE6] hover:scale-105 transition-all duration-300"
-            >
-              Contact Us
-            </Link>
-          </div>
+          {/* CONTACT BUTTON */}
+          <Link
+            href="/#contact"
+            className="hidden items-center gap-2 rounded-full bg-[#075B25] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-1 hover:bg-[#087C37] md:inline-flex"
+          >
+            <Sprout size={18} className="text-[#B9E65A]" />
+            Contact Us
+          </Link>
 
-          {/* MOBILE MENU BUTTON */}
-          <div className="flex items-center md:hidden">
-            <button
-              type="button"
-              className="text-white"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={menuOpen}
-            >
-              {menuOpen ? <X size={30} /> : <Menu size={30} />}
-            </button>
-          </div>
+          {/* MOBILE MENU ICON */}
+          <button
+            type="button"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            className="text-[#075B25] md:hidden"
+          >
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
 
         {/* MOBILE MENU */}
         <div
           className={`overflow-hidden transition-all duration-300 md:hidden ${
-            menuOpen ? "max-h-[700px]" : "max-h-0"
+            menuOpen ? "max-h-[650px]" : "max-h-0"
           }`}
         >
-          <div className="bg-[#006B35] border-t border-[#00A844]">
-            <nav className="flex flex-col p-6 gap-2">
+          <nav className="border-t border-[#E9EBDD] bg-[#FBFBF3] px-7 py-4">
 
-              <a
-                href="/#home"
+            {navItems.slice(0, 2).map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="py-3 text-white"
+                className="block border-b border-[#E9EBDD] py-3.5 font-medium text-[#263326]"
               >
-                Home
-              </a>
+                {item.name}
+              </Link>
+            ))}
 
-              <a
-                href="/#about"
+            <button
+              type="button"
+              onClick={() => setProductOpen(!productOpen)}
+              className="flex w-full items-center justify-between border-b border-[#E9EBDD] py-3.5 font-medium text-[#263326]"
+            >
+              Microgreens
+              <ChevronDown
+                size={18}
+                className={productOpen ? "rotate-180" : ""}
+              />
+            </button>
+
+            {productOpen && productItems.map((product) => (
+              <Link
+                key={product.name}
+                href={product.href}
+                onClick={() => {
+                  setMenuOpen(false);
+                  setProductOpen(false);
+                }}
+                className="block bg-[#F0F5E9] px-5 py-3 text-sm text-[#075B25]"
+              >
+                {product.name}
+              </Link>
+            ))}
+
+            {navItems.slice(2).map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="py-3 text-white"
+                className="block border-b border-[#E9EBDD] py-3.5 font-medium text-[#263326]"
               >
-                About
-              </a>
+                {item.name}
+              </Link>
+            ))}
 
-              <p className="pt-3 pb-2 font-semibold text-[#39E75F]">
-                Products
-              </p>
-
-              {productItems.map((product) => (
-                <Link
-                  key={product.name}
-                  href={product.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="ml-4 py-2 text-white hover:text-[#39E75F]"
-                >
-                  • {product.name}
-                </Link>
-              ))}
-
-              <a
-                href="/#benefits"
-                onClick={() => setMenuOpen(false)}
-                className="py-3 text-white"
-              >
-                Benefits
-              </a>
-
-              <a
-                href="/#gallery"
-                onClick={() => setMenuOpen(false)}
-                className="py-3 text-white"
-              >
-                Gallery
-              </a>
-<Link
-  href="/blog"
-  onClick={() => setMenuOpen(false)}
-  className="py-3 text-white hover:text-[#39E75F]"
->
-  Blog
-</Link>
-              {/* MOBILE CONTACT BUTTON */}
-              <a
-                href="/#contact"
-                onClick={() => setMenuOpen(false)}
-                className="mt-5 rounded-full bg-white text-[#008F3D] text-center py-3 font-semibold"
-              >
-                Contact Us
-              </a>
-
-            </nav>
-          </div>
+            <Link
+              href="/#contact"
+              onClick={() => setMenuOpen(false)}
+              className="mt-5 flex items-center justify-center gap-2 rounded-full bg-[#075B25] py-3 font-semibold text-white"
+            >
+              <Sprout size={18} className="text-[#B9E65A]" />
+              Contact Us
+            </Link>
+          </nav>
         </div>
       </div>
     </header>

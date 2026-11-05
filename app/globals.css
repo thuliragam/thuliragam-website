@@ -299,3 +299,26 @@ section {
     animation: none;
   }
 }
+
+/* THULIRAGAM NUTRITION TICKER */
+
+.nutrition-track {
+  animation: nutrition-scroll 65s linear infinite;
+  will-change: transform;
+}
+
+@keyframes nutrition-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nutrition-track {
+    animation: none;
+  }
+}
